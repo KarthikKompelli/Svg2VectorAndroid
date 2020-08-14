@@ -25,7 +25,6 @@ public class Runner {
                 break;
             default:
                 processor = new SvgFilesProcessor(args[0], args[1], args[2], args[3]);
-                break;
         }
         processor.process();
     }

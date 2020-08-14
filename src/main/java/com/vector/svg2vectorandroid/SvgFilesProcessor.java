@@ -73,7 +73,9 @@ public class SvgFilesProcessor {
                         CopyOption[] opt = new CopyOption[]{COPY_ATTRIBUTES, REPLACE_EXISTING};
                         Path newDirectory = destinationVectorPath.resolve(sourceSvgPath.relativize(dir));
                         try {
-                            Files.copy(dir, newDirectory, opt);
+                            if (!Files.isDirectory(newDirectory)) {
+                                Files.copy(dir, newDirectory, opt);
+                            }
                         } catch (FileAlreadyExistsException ex) {
                             System.out.println("FileAlreadyExistsException " + ex.toString());
                         } catch (IOException x) {
